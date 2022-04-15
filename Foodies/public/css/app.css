@@ -760,6 +760,9 @@ select {
 .w-1\/2 {
   width: 50%;
 }
+.w-16 {
+  width: 4rem;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
