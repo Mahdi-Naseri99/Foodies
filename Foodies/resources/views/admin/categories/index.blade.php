@@ -33,9 +33,9 @@
                     <tbody>
                         @foreach($categories as $category)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 {{ $category->name }}
-                            </td>
+                            </th>
                             <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                 <img src="{{ Storage::url($category->image) }}" class="w-16 h-16 rounded">
                             </td>
