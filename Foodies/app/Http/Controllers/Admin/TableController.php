@@ -45,7 +45,7 @@ class TableController extends Controller
             'location' => $request->location,
         ]);
 
-        return to_route('admin.tables.index');
+        return to_route('admin.tables.index')->with('success', 'The Table has been created successfully.');
     }
 
     /**
@@ -81,7 +81,7 @@ class TableController extends Controller
     {
         $table->update($request->validated());
 
-        return to_route('admin.tables.index');
+        return to_route('admin.tables.index')->with('success', 'The Table has been updated successfully.');
     }
 
     /**
@@ -94,6 +94,6 @@ class TableController extends Controller
     {
         $table->delete();
 
-        return to_route('admin.tables.index');
+        return to_route('admin.tables.index')->with('danger', 'The Table has been deleted successfully.');
     }
 }

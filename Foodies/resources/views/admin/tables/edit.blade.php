@@ -22,15 +22,21 @@
                             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                             <div class="mt-1">
                                 <input type="text" id="name" name="name" value="{{ $table->name }}"
-                                       class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                       class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-400 @enderror" />
                             </div>
+                            @error('name')
+                                <div class="text-sm text-red-400">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="sm:col-span-6">
                             <label for="capacity" class="block text-sm font-medium text-gray-700">Capacity</label>
                             <div class="mt-1">
                                 <input type="number" id="capacity" name="capacity" value="{{ $table->capacity }}"
-                                       class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                                       class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('capacity') border-red-400 @enderror" />
                             </div>
+                            @error('capacity')
+                                <div class="text-sm text-red-400">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="sm:col-span-6 pt-5">
                             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
@@ -41,6 +47,9 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @error('status')
+                                <div class="text-sm text-red-400">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="sm:col-span-6 pt-5">
                             <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
@@ -51,9 +60,12 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @error('loaction')
+                                <div class="text-sm text-red-400">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mt-6">
-                            <button type="submit" class="px-4 py-2 bg-indigo-50 hover:bg-indigo-200 rounded-lg">Add</button>
+                            <button type="submit" class="px-4 py-2 bg-indigo-50 hover:bg-indigo-200 rounded-lg">Update</button>
                         </div>
                     </form>
                 </div>
