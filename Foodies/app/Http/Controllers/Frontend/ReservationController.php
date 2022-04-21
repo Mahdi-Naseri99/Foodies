@@ -17,6 +17,7 @@ class ReservationController extends Controller
         $reservation = $request->session()->get('reservation');
         $min_date = Carbon::today();
         $max_date = Carbon::now()->addWeek();
+
         return view('reservations.step-one', compact('reservation', 'min_date', 'max_date'));
     }
 
@@ -50,6 +51,7 @@ class ReservationController extends Controller
         $tables = Table::where('status', TableStatus::Available)
             ->where('capacity', '>=', $reservation->guestsNumber)
             ->whereNotIn('id', $res_table_ids)->get();
+
         return view('reservations.step-two', compact('reservation', 'tables'));
     }
 

@@ -4,11 +4,13 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
+use App\Http\Controllers\Frontend\FeedbackController as FrontendFeedbackController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,11 @@ Route::post('/reservation/step-one', [FrontendReservationController::class, 'sto
 Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
 Route::post('/reservation/step-two', [FrontendReservationController::class, 'storeStepTwo'])->name('reservations.store.step.two');
 Route::get('/thankYou', [WelcomeController::class, 'thankYou'])->name('thankYou');
+Route::post('/feedbacks/feedbacks-ok' , [FrontendFeedbackController::class , 'store'])->name('feedbacks.store');
+// Route::get('/feedbacks/feedbacks_ok' , [WelcomeController::class , 'feedbacks']);
+Route::get('/thankYou', [WelcomeController::class, 'feedbacks'])->name('feedbacks');
+Route::get('/feedbacks/feedbacks-all' ,[FrontendFeedbackController::class , 'show'])->name('show-all');
+Route::get('/about', [WelcomeController::class, 'aboutUs'])->name('aboutUs.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,6 +39,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/menus', MenuController::class);
     Route::resource('/tables', TableController::class);
     Route::resource('/reservations', ReservationController::class);
+    Route::resource('/offers', OfferController::class);
 });
 
 require __DIR__.'/auth.php';

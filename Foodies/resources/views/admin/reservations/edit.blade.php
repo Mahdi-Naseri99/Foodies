@@ -9,7 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex m-2 p-2">
                 <a href="{{ route('admin.reservations.index') }}"
-                   class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">Back</a>
+                   class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">
+                    <i class="fa-solid fa-arrow-left"></i> &nbsp; Back
+                </a>
             </div>
             <div class="m-2 p-2 bg-slate-100 rounded">
                 <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
@@ -101,7 +103,7 @@
                         <div class="mt-6 p-4">
                             <button type="submit"
                                     class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">
-                                Update
+                                <i class="fa-solid fa-check"></i> &nbsp; Update
                             </button>
                         </div>
                     </form>

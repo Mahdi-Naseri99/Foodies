@@ -8,12 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex m-2 p-2">
-                <a href="{{ route('admin.menus.index') }}" class="px-4 py-2 bg-indigo-50 hover:bg-indigo-200 rounded-lg">
-                    Back
+                <a href="{{ route('admin.menus.index') }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">
+                    <i class="fa-solid fa-arrow-left"></i> &nbsp; Back
                 </a>
             </div>
 
-            <div class="m-2 p-2 bg-white rounded">
+            <div class="m-2 p-2 bg-slate-100 rounded">
                 <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
                     <form method="POST" action="{{ route('admin.menus.store') }}" enctype="multipart/form-data">
                         @csrf
@@ -70,8 +70,8 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                            <button type="submit" class="px-4 py-2 bg-indigo-50 hover:bg-indigo-200 rounded-lg">
-                                Add
+                            <button type="submit" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">
+                                <i class="fa-solid fa-check"></i> &nbsp; Add
                             </button>
                         </div>
                     </form>
