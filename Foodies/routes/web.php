@@ -22,10 +22,10 @@ Route::get('/reservation/step-one', [FrontendReservationController::class, 'step
 Route::post('/reservation/step-one', [FrontendReservationController::class, 'storeStepOne'])->name('reservations.store.step.one');
 Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
 Route::post('/reservation/step-two', [FrontendReservationController::class, 'storeStepTwo'])->name('reservations.store.step.two');
-Route::get('/thankYou', [WelcomeController::class, 'thankYou'])->name('thankYou');
+Route::get('/reservationComplete', [WelcomeController::class, 'thankYou'])->name('thankYou');
 Route::post('/feedbacks/feedbacks-ok' , [FrontendFeedbackController::class , 'store'])->name('feedbacks.store');
 // Route::get('/feedbacks/feedbacks_ok' , [WelcomeController::class , 'feedbacks']);
-Route::get('/thankYou', [WelcomeController::class, 'feedbacks'])->name('feedbacks');
+Route::get('/feedbackSubmitted', [WelcomeController::class, 'feedbacks'])->name('feedbacks');
 Route::get('/feedbacks/feedbacks-all' ,[FrontendFeedbackController::class , 'show'])->name('show-all');
 Route::get('/about', [WelcomeController::class, 'aboutUs'])->name('aboutUs.index');
 
