@@ -220,8 +220,8 @@
             </div>
         </section>
     @endif
-    <section class="pt-12 pb-12 bg-red-50">
 
+    <section class="pt-12 pb-12 bg-red-50">
         <form method="POST" enctype="multipart/form-data" action="{{route('feedbacks.store')}}">
             @csrf
             <div class="container flex items-center justify-center p-6 mx-auto bg-white shadow-lg sm:p-12 md:w-1/2">
@@ -288,7 +288,6 @@
                                class="px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
                         >
                     </button>
-
                 </div>
             </div>
         </form>

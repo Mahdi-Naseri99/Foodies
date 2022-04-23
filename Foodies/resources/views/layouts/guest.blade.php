@@ -40,6 +40,23 @@
                 <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
                 <div :class="isOpen ? 'flex' : 'hidden'"
                      class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
+                    <div class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">
+                        <div class="input-group rounded">
+                            <form method="GET" action="#">
+                                <input name="search"
+                                       type="search"
+                                       class="form-control rounded border-gray-200"
+                                       placeholder="Search"
+                                       aria-label="Search"
+                                       aria-describedby="search-addon"/>
+                                <div class="inline-flex  h-10 w-18">
+                                    <button type="submit" class="btn btn-primary">
+                                        Go
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"
                        href="/">Home</a>
                     <a class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400"

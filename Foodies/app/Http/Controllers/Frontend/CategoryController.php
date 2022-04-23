@@ -9,6 +9,13 @@ class CategoryController extends Controller
 {
     public function index() {
         $categories = Category::all();
+
+        if(request('search'))
+        {
+            $categories = Category::query()->where('name' , 'like' , '%'.request('search').'%')
+                ->orWhere('description' , 'like' , '%'.request('search').'%')->get();
+        }
+
         return view('categories.index', compact('categories'));
     }
 

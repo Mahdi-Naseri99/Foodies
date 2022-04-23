@@ -1,0 +1,122 @@
+<?php
+
+namespace App\Http\Controllers\Employee;
+
+use App\Enums\TableStatus;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationStoreRequest;
+use App\Models\Reservation;
+use App\Models\Table;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+
+class ReservationController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $reservations = Reservation::all();
+        return view('employee.reservations.index', compact('reservations'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $tables = Table::where('status', TableStatus::Available)->get();
+        return view('employee.reservations.create', compact('tables'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(ReservationStoreRequest $request)
+    {
+        $table = Table::findOrFail($request->table_id);
+        if($request->guestsNumber > $table->capacity) {
+            return back()->with('warning', 'Please choose the table based on its capacity.');
+        }
+
+        $request_date = Carbon::parse($request->resDate);
+        foreach($table->reservations as $reservation) {
+            if($reservation->resDate->format('Y-m-d') == $request_date->format('Y-m-d')) {
+                return back()->with('warning', 'This table is reserved for this date.');
+            }
+        }
+
+        Reservation::create($request->validated());
+
+        return to_route('employee.reservations.index')->with('success', 'The Reservation has been created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Reservation $reservation)
+    {
+        $tables = Table::where('status', TableStatus::Available)->get();
+        return view('employee.reservations.edit', compact('reservation', 'tables'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ReservationStoreRequest $request, Reservation $reservation)
+    {
+        $table = Table::findOrFail($request->table_id);
+        if ($request->guestsNumber > $table->capacity) {
+            return back()->with('warning', 'Please choose the table based on the number of guests.');
+        }
+        $request_date = Carbon::parse($request->resDate);
+        $reservations = $table->reservations()->where('id', '!=', $reservation->id)->get();
+        foreach ($reservations as $res) {
+            if ($res->resDate->format('Y-m-d') == $request_date->format('Y-m-d')) {
+                return back()->with('warning', 'This table is reserved for this date.');
+            }
+        }
+
+        $reservation->update($request->validated());
+        return to_route('employee.reservations.index')->with('success', 'The Reservation updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Reservation $reservation)
+    {
+        $reservation->delete();
+
+        return to_route('employee.reservations.index')->with('warning', 'The Reservations has been deleted successfully.');
+    }
+}

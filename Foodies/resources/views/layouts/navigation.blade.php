@@ -20,6 +20,11 @@
                             {{ __('Admin') }}
                         </x-nav-link>
                     @endif
+                    @if(!Auth::user()->isAdmin) <!--  // if the authenticated user is not an an Admin -->
+                    <x-nav-link :href="route('employee.index')" :active="request()->routeIs('employee.index')">
+                        {{ __('Employee') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

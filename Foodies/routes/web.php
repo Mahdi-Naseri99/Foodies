@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\EmployeeController as AdminEmpController;
+use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\Employee\ReservationController as EmpResController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
@@ -40,6 +43,12 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/tables', TableController::class);
     Route::resource('/reservations', ReservationController::class);
     Route::resource('/offers', OfferController::class);
+    Route::resource('/employees', AdminEmpController::class);
+});
+
+Route::middleware(['auth', 'employee'])->name('employee.')->prefix('employee')->group(function() {
+    Route::get('/', [EmployeeController::class, 'index'])->name('index');
+    Route::resource('/reservations', EmpResController::class);
 });
 
 require __DIR__.'/auth.php';
