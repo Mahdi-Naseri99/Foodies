@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Foodies') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -40,7 +40,7 @@
                 <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
                 <div :class="isOpen ? 'flex' : 'hidden'"
                      class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
-                    <div class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">
+                    <div class=" bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:text-green-400">
                         <div class="input-group rounded">
                             <form method="GET" action="#">
                                 <input name="search"
@@ -49,9 +49,9 @@
                                        placeholder="Search"
                                        aria-label="Search"
                                        aria-describedby="search-addon"/>
-                                <div class="inline-flex  h-10 w-18">
+                                <div class="inline-flex h-10 w-18">
                                     <button type="submit" class="btn btn-primary">
-                                        Go
+                                        <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </div>
                             </form>

@@ -62,8 +62,8 @@ class ReservationController extends Controller
         $reservation = $request->session()->get('reservation');
         $reservation->fill($validated);
         $reservation->save();
-        $request->session()->forget('reservation');
+        // $request->session()->forget('reservation');
 
-        return to_route('thankYou');
+        return to_route('thankYou', compact('reservation'));
     }
 }

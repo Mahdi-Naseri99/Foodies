@@ -14,6 +14,8 @@ yarn-error.log
 /.vscode
 /vendor/
 node_modules/
+npm-debug.log
+yarn-error.log
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
@@ -24,7 +26,11 @@ public/hot
 public_html/storage
 public_html/hot
 storage/*.key
+.env
+Homestead.yaml
+Homestead.json
 /.vagrant
+.phpunit.result.cache
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 # User-specific stuff
@@ -85,16 +91,3 @@ fabric.properties
 .idea/httpRequests
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
-webpack.mix.js
-composer.json
-composer.lock
-package-lock.json
-package.json
-resources/js
-resources/css
-resources/sass
-database/migrations/*
-phpunit.xml
-artisan
-.styleci.yml
-bootstrap

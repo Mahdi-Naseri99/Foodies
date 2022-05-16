@@ -164,7 +164,7 @@
         <div class="my-8 text-center">
             <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                 Food Gallery</h2>
-            <p class="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. soluta sapient</p>
+            <p class="text-xl">Check some snaps of our delicious irresistible food gallery!</p>
         </div>
         <div class="container grid gap-4 mx-auto lg:grid-cols-3">
             <div class="w-full rounded">
@@ -177,9 +177,6 @@
                 <img src="https://cdn.pixabay.com/photo/2014/10/19/20/59/hamburger-494706__340.jpg" alt="image">
             </div>
             <div class="w-full rounded">
-                <img src="https://cdn.pixabay.com/photo/2016/02/19/11/30/pizza-1209748_960_720.jpg" alt="image">
-            </div>
-            <div class="w-full rounded">
                 <img src="https://cdn.pixabay.com/photo/2015/07/12/14/26/coffee-842020__340.jpg" alt="image">
             </div>
             <div class="w-full rounded">
@@ -189,17 +186,39 @@
     </section>
 
     @if(count($feedbacks) >= 1)
-        <section class="pt-4 pb-12 bg-gray-800">
+        <section class="pt-1 pb-12 bg-gray-800">
             <div class="my-16 text-center">
                 <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                     Feedbacks </h2>
                 <p class="text-xl text-white">Check our clients' Feedbacks!</p>
             </div>
             <div class="grid gap-2 lg:grid-cols-3">
-                @for ($i = 0; $i < 3; $i++)
+                @for ($i = 0; $i < count($feedbacks) && $i < 3; $i++)
                     <div class="max-w-md p-4 bg-white rounded-lg shadow-lg">
                         <div class="flex justify-start mt-4">
-                            <a href="#" class="text-xl font-medium text-green-500">{{ $feedbacks[$i]->firstName }} {{ $feedbacks[$i]->lastName }}</a>
+                            <a href="#" class="text-xl font-medium text-green-500">
+                                {{ $feedbacks[$i]->firstName }} {{ $feedbacks[$i]->lastName }}
+                            </a>
+                            @if($feedbacks[$i]->rating==5)
+                                <img src={{Storage::url('5stars.jpeg')}}
+                                    alt="image" height="90" width="150" class="pl-2">
+                            @endif
+                            @if($feedbacks[$i]->rating==4)
+                                <img src={{Storage::url('4stars.jpg')}}
+                                    alt="image" height="90" width="150" class="pl-2">
+                            @endif
+                            @if($feedbacks[$i]->rating==3)
+                                <img src={{Storage::url('3stars.jpg')}}
+                                    alt="image" height="90" width="150" class="pl-2">
+                            @endif
+                            @if($feedbacks[$i]->rating==2)
+                                <img src={{Storage::url('2stars.jpg')}}
+                                    alt="image" height="90" width="150" class="pl-2">
+                            @endif
+                            @if($feedbacks[$i]->rating==1)
+                                <img src={{Storage::url('1stars.jpg')}}
+                                    alt="image" height="90" width="150" class="pl-2">
+                            @endif
                         </div>
                         <div>
                             <p class="mt-2 text-gray-600">{{ $feedbacks[$i]->feedback }}</p>
